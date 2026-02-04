@@ -1,0 +1,9 @@
+id: pc-sanity-base
+_name: pc-sanity-base
+unit: test plan
+_description:
+    This test plan created by Commercial Engineering team, including kernel error detection,
+    devices check, GPU check and thermal check. It will be used to qualify OEM image before
+    release the image to QA team.
+include:
+    com.canonical.certification::miscellanea/check-kernel certification-status=blocker
