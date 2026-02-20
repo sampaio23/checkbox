@@ -1,0 +1,31 @@
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/screen-pkg-not-public
+user: root
+command: screen-pkg.py --out "$PLAINBOX_SESSION_SHARE" check-public
+_summary: check if pkgs not on public archive
+_description:
+ check if pkgs not on public archive
+
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/screen-pkg-not-supported-by-canonical
+user: root
+command: screen-pkg.py --out "$PLAINBOX_SESSION_SHARE" check-component
+_summary: check if pkgs are not supported by Canonical
+_description:
+ This lists the packages which is not coming from main or restricted component.
+
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/screen-private-ppa
+user: root
+command:
+  if grep -qrE 'private-ppa\.launchpad(|content)\.net' "/etc/apt/sources.list"* ; then
+      >&2 printf 'The following files have private PPA access:\n'
+      >&2 grep -lrE 'private-ppa\.launchpad(|content)\.net' "/etc/apt/sources.list"*
+      exit 1
+  fi
+_summary: check if any private ppas are added
+_description:
+ This checks if any private ppas are added to the system, fails if any found.
