@@ -202,6 +202,7 @@ _purpose:
 plugin: attachment
 category_id: com.canonical.plainbox::info
 id: info/image-url
+user: root
 estimated_duration: 0.1
 _description: Get image URL based on DCD
 _summary: Provides image URL based on DistributionChannelDescriptor meta data
