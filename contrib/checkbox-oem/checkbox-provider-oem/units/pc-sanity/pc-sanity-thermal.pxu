@@ -286,6 +286,6 @@ estimated_duration: 0.5
 requires:
  cpuinfo.type == 'GenuineIntel'
  cpuinfo.model_number == '6'
- package.name == 'systemd'
+ snap_executable.name == 'journalctl'
 depends: miscellanea/thermald
 command: check-thermald-unknown-cond.sh

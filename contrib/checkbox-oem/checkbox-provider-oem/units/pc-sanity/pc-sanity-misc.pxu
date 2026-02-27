@@ -173,7 +173,7 @@ category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/get-wwan-firmware-version
 estimated_duration: 2.0
 requires:
- package.name == 'modemmanager'
+ snap_executable.name == 'mmcli'
  mobilebroadband.gsm == 'supported'
 command:
  for i in $(mmcli -L | awk '/freedesktop\/ModemManager1\/Modem/ {print $1;}'); do
@@ -188,7 +188,8 @@ category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/boot-up-time-under-2-min
 estimated_duration: 2.0
 requires:
- package.name == 'systemd'
+ snap_executable.name == 'systemd-analyze'
+ snap_executable.name == 'systemctl'
  dmi.product in ['Notebook','Laptop']
 command: boot-up-time-check.sh
 _summary:
