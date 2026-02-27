@@ -146,7 +146,7 @@ category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/check_production_suite
 requires:
  lsb.release >= "22.04"
- package.name == 'lsb-release'
+ snap_executable.name == 'lsb_release'
 user: root
 command: check-production-suite.sh
 _summary: Check if production suite is created properly
