@@ -27,6 +27,7 @@ include:
 nested_part:
   oem-audio-automated
   oem-barcode-scanner-automated
+  oem-bluetooth-automated
   oem-button-automated
   oem-buzzer-automated
   oem-camera-automated
