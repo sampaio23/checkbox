@@ -3,3 +3,4 @@ unit: test plan
 _name: Automated power tests
 _description: Automated power tests for devices
 include:
+
