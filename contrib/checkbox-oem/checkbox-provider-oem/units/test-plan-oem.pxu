@@ -27,6 +27,7 @@ include:
 nested_part:
   oem-audio-automated
   oem-barcode-scanner-automated
+  oem-bios-automated
   oem-bluetooth-automated
   oem-button-automated
   oem-buzzer-automated
@@ -81,6 +82,7 @@ include:
 nested_part:
   oem-audio-manual
   oem-barcode-scanner-manual
+  oem-bios-manual
   oem-button-manual
   oem-buzzer-manual
   oem-camera-manual
