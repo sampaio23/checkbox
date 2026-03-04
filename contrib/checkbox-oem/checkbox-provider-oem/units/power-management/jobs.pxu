@@ -1,0 +1,29 @@
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: power-management/pm_test_devices
+user: root
+command:
+  echo "devices" | tee /sys/power/pm_test
+_summary: Set pm_test to devices level
+_description:
+  Set pm_test to devices level, so that we can ignore BIOS issue.
+
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: power-management/pm_test_freezer
+user: root
+command:
+  echo "freezer" | tee /sys/power/pm_test
+_summary: Set pm_test to freezer level
+_description:
+  Set pm_test to freezer level, so that we can ignore BIOS issue.
+
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: power_management/pm_test_platform
+user: root
+command:
+  echo "platform" | tee /sys/power/pm_test
+_summary: Set pm_test to platform level
+_description:
+  Set pm_test to platform level, so that we can ignore BIOS issue.
