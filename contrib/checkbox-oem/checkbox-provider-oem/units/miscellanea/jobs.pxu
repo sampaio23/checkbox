@@ -1,0 +1,33 @@
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/screen-pkg-not-public
+user: root
+environ:
+  SNAP
+command:
+  if [ -z ${SNAP+x} ]; then
+    misc-screen-pkg.py --out "$PLAINBOX_SESSION_SHARE" check-public
+  else
+    echo "Not executed due to snap environment"
+    true
+  fi
+_summary: Check if pkgs not on public archive
+_description:
+  Check if pkgs not on public archive
+
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/screen-pkg-not-supported-by-canonical
+user: root
+environ:
+  SNAP
+command:
+  if [ -z ${SNAP+x} ]; then
+    misc-screen-pkg.py --out "$PLAINBOX_SESSION_SHARE" check-component
+  else
+    echo "Not executed due to snap environment"
+    true
+  fi
+_summary: Check if pkgs are not supported by Canonical
+_description:
+  This lists the packages which is not coming from main or restricted component.
