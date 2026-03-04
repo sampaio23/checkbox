@@ -1,4 +1,4 @@
-id: oem-misc-full
+id: oem-miscellanea-full
 unit: test plan
 _name: Miscellanea tests
 _description: Full miscellanea tests for devices
@@ -7,13 +7,15 @@ nested_part:
   oem-miscellanea-automated
   oem-miscellanea-manual
 
-id: oem-misc-automated
+id: oem-miscellanea-automated
 unit: test plan
 _name: Miscellanea auto tests
 _description: Automated miscellanea tests for devices
 include:
+  miscellanea/screen-pkg-not-public
+  miscellanea/screen-pkg-not-supported-by-canonical
 
-id: oem-misc-manual
+id: oem-miscellanea-manual
 unit: test plan
 _name: Miscellanea manual tests
 _description: Manual miscellanea tests for devices

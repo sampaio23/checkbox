@@ -48,7 +48,7 @@ nested_part:
   oem-kernel-automated
   oem-led-automated
   oem-mir-automated
-  oem-misc-automated
+  oem-miscellanea-automated
   oem-mtd-automated
   oem-optee-automated
   oem-otg-automated
@@ -99,7 +99,7 @@ nested_part:
   oem-installation-info-manual
   oem-led-manual
   oem-mir-manual
-  oem-misc-manual
+  oem-miscellanea-manual
   oem-mtd-manual
   oem-optee-manual
   oem-otg-manual
