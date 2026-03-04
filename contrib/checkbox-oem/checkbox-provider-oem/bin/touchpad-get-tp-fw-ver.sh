@@ -37,7 +37,7 @@ tp_path=$(udevadm info /sys/bus/i2c/devices/"$device" | grep "P:" | cut -d " " -
 sub=$(echo "$tp_path" | sed -E 's/\/i2c-[A-Z].*//')
 bus=$(basename "$sub")
 id=$(echo "$bus" | sed -E 's/i2c-//')
-hid_desc=$(sudo i2ctransfer -f -y "$id" w2@0x2c 0x20 0x00 r26)
+hid_desc=$(i2ctransfer -f -y "$id" w2@0x2c 0x20 0x00 r26)
 
 major=$(echo "$hid_desc" | cut -d " " -f26)
 minor=$(echo "$hid_desc" | cut -d " " -f25)
