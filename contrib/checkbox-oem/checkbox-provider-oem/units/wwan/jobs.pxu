@@ -1,0 +1,16 @@
+plugin: attachment
+category_id: com.canonical.plainbox::miscellanea
+id: wwan/get-wwan-firmware-version
+estimated_duration: 2.0
+imports: from com.canonical.certification import mobilebroadband
+requires:
+  snap_executable.name == 'mmcli'
+  mobilebroadband.gsm == 'supported'
+command:
+  for i in $(mmcli -L | awk '/freedesktop\/ModemManager1\/Modem/ {print $1;}'); do
+    echo "model: $(mmcli -m "$i" | grep "model" | awk -F'model:' '{print $2}')"
+    echo "revision: $(mmcli -m "$i" | grep "firmware revision" | awk -F'firmware revision:' '{print $2}')"
+  done
+_description:
+  Attach WWAN module FW info.
+
