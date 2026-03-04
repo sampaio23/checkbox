@@ -12,14 +12,18 @@ id: oem-graphics-automated
 unit: test plan
 _name: CE-OEM Graphics tests (Automated)
 _description:
-    Graphics tests (Automated)
+  Graphics tests (Automated)
+bootstrap_include:
+  com.canonical.certification::device
 include:
   graphics/check-gpu-driver
+  graphics/check-nvidia
+  graphics/check_nvidia_modalias_.*
   graphics/edid-continuous-frequency
 
 id: oem-graphics-manual
 unit: test plan
 _name: CE-OEM Graphics tests (Manual)
 _description:
-    Graphics tests (Manual)
+  Graphics tests (Manual)
 include:

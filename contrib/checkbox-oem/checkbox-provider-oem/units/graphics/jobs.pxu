@@ -11,9 +11,50 @@ _description:
 
 plugin: shell
 category_id: com.canonical.plainbox::miscellanea
+imports: from com.canonical.certification import graphics_card
+requires:
+  graphics_card.driver == 'nvidia'
+id: graphics/check-nvidia
+command:
+  set -x
+  graphics-check-nvidia.sh --out "$PLAINBOX_SESSION_SHARE"
+_summary: Check if nvidia dgpu behave as we expected.
+_description:
+  Nvidia introduce runtime D3 (runtime pm) from Nvidia driver version 450. This test case is used to check if everything work as expected.
+
+unit: template
+template-resource: device
+template-filter:
+  device.category == 'VIDEO'
+  device.vendor_id == '4318'
+template-unit: job
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: graphics/check_nvidia_modalias_{__index__}_{product_id}
+requires: snap_executable.name == 'ubuntu-drivers'
+command:
+  if ! ubuntu-drivers list --gpgpu | grep -q "nvidia-driver-"; then
+    echo "modalias not found in Nvidia driver"
+    exit 1
+  fi
+_summary: Nvidia device modalias check
+_description:
+  Check if Nvidia driver contain the device's modalias
+
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
 id: graphics/edid-continuous-frequency
 command:
   graphics-edid_continuous_frequency_check.py
 _summary: Check if panel edid follow the EDID spec.
 _description:
   Check if panel edid follow the EDID spec.
+
+
+
+
+
+
+
+
+
