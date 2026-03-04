@@ -15,6 +15,7 @@ _description:
     Graphics tests (Automated)
 include:
   graphics/check-gpu-driver
+  graphics/edid-continuous-frequency
 
 id: oem-graphics-manual
 unit: test plan
