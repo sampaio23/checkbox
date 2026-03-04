@@ -40,6 +40,7 @@ parts:
       - bzip2
       - git
       - iputils-ping
+      - i2c-tools
       - jq
       - lsb-release
       - modemmanager

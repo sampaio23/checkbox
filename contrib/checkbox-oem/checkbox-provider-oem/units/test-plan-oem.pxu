@@ -64,6 +64,7 @@ nested_part:
   oem-spi-automated
   oem-strict-confinement-automated
   oem-thermal-automated
+  oem-touchpad-automated
   oem-video-codec-automated
   oem-vpu-automated
   oem-wifi-ap-automated
@@ -116,6 +117,7 @@ nested_part:
   oem-spi-manual
   oem-strict-confinement-manual
   oem-thermal-manual
+  oem-touchpad-manual
   oem-touchscreen-manual
   oem-video-codec-manual
   oem-vpu-manual
