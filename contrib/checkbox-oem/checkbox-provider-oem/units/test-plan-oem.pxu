@@ -45,6 +45,7 @@ nested_part:
   oem-graphics-automated
   oem-iio-sensors-automated
   oem-installation-info-automated
+  oem-kernel-automated
   oem-led-automated
   oem-mir-automated
   oem-misc-automated

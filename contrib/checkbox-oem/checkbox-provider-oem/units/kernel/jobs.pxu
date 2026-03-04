@@ -1,16 +1,16 @@
 plugin: shell
 category_id: com.canonical.plainbox::miscellanea
-id: miscellanea/check-kernel
+id: kernel/check-kernel
 user: root
 environ:
   SNAP
 command:
   if [ -z ${SNAP+x} ]; then
-    BOOT_LOCATION=/boot;
+    SNAP_PREFIX="";
   else
-    BOOT_LOCATION=/var/lib/snapd/hostfs/boot;
+    SNAP_PREFIX="/var/lib/snapd/hostfs";
   fi
-  case $(find $BOOT_LOCATION/ -name 'vmlinuz-*' | wc -l) in
+  case $(find $SNAP_PREFIX/boot -name 'vmlinuz-*' | wc -l) in
     0)
       echo "No Linux kernel is installed"
       exit 1
