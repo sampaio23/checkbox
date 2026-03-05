@@ -38,6 +38,36 @@ command: misc-csme-detection-tool.sh
 _description:
   Attach Intel ME info.
 
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/gate_rste_raid
+environ:
+  SNAP
+command:
+  if [ -z ${SNAP+x} ]; then
+    SNAP_PREFIX=""
+  else
+    SNAP_PREFIX="/var/lib/snapd/hostfs";
+  fi
+  set -x
+  # copy from script https://launchpadlibrarian.net/468773053/hw-detect_1.117ubuntu8.debdiff
+  # shellcheck disable=SC1001
+  for ahci_device in $SNAP_PREFIX/sys/module/ahci/drivers/pci\:ahci/*/remapped_nvme
+  do
+    if [ -f "$ahci_device" ]; then
+      ref_count="$(cat "$ahci_device")"
+      if [ "$ref_count" -ge 1 ]; then
+        echo "Intel RAID/RST mode detected."
+        exit 1
+      else
+        echo "No Intel RAID/RST mode detected."
+      fi
+    fi
+  done
+_summary: To confirm the dell-recoery is what we expected.
+_description:
+  We don't support RSTe raid, so gate it based on https://docs.google.com/document/d/13G8VkaFB8W2ck-vtzu4OqkYFmi7-w0ooi6qNpxJLtPY/edit#
+
 plugin: attachment
 category_id: com.canonical.plainbox::info
 id: miscellanea/image-url

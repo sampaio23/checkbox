@@ -41,6 +41,24 @@ _summary: Nvidia device modalias check
 _description:
   Check if Nvidia driver contain the device's modalias
 
+unit: template
+template-resource: dmi
+template-filter:
+  dmi.category == 'CHASSIS' and dmi.product not in ['Mini Tower', 'Tower', 'Main Server Chassis','Rack Mount Chassis']
+template-unit: job
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: graphics/check_windowing_system_{product}
+requires:
+  lsb.release >= "22.04"
+  snap_executable.name == "lspci"
+depends: device/check-display_{product}
+command: graphics-check-windowing-system.sh
+_summary: Check if system using correct windowing system
+_description:
+  After 22.04, machine with Nvidia GPU will using X11 as windowing system.
+  And machine with AMD and Intel GPU will default to wayland.
+
 plugin: shell
 category_id: com.canonical.plainbox::miscellanea
 id: graphics/edid-continuous-frequency
