@@ -54,7 +54,7 @@ nested_part:
   oem-mtd-automated
   oem-optee-automated
   oem-otg-automated
-  oem-power-automated-by-pdu
+  oem-power-management-automated
   oem-printer-automated
   oem-ptp-automated
   oem-regulator-automated
@@ -68,7 +68,7 @@ nested_part:
   oem-touchpad-automated
   oem-video-codec-automated
   oem-vpu-automated
-  oem-wifi-ap-automated
+  oem-wifi-automated
   oem-wwan-automated
 certification_status_overrides:
   apply blocker to .*
@@ -109,6 +109,7 @@ nested_part:
   oem-mtd-manual
   oem-optee-manual
   oem-otg-manual
+  oem-power-management-manual
   oem-printer-manual
   oem-ptp-manual
   oem-regulator-manual
@@ -122,7 +123,7 @@ nested_part:
   oem-touchscreen-manual
   oem-video-codec-manual
   oem-vpu-manual
-  oem-wifi-ap-manual
+  oem-wifi-manual
   oem-wwan-manual
 certification_status_overrides:
   apply blocker to .*

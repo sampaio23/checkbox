@@ -11,7 +11,17 @@ id: oem-device-automated
 unit: test plan
 _name: Device Tree auto tests
 _description: Automated Device Tree tests for devices
+bootstrap_include:
+  com.canonical.certification::cpuinfo
+  com.canonical.certification::device
+  com.canonical.certification::dmi
 include:
+  device/check-device-runtime-pm_.*
+  device/check-display_.*
+  device/check-i2c-hid-existence
+  device/intel-hid_.*
+  device/intel-vtd-enabled_.*
+  device/tgp-rid-check_.*
 
 id: oem-device-manual
 unit: test plan

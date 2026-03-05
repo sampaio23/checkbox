@@ -15,11 +15,13 @@ _description:
   Graphics tests (Automated)
 bootstrap_include:
   com.canonical.certification::device
+  com.canonical.certification::graphics_card
 include:
   graphics/check-gpu-driver
   graphics/check-nvidia
   graphics/check_nvidia_modalias_.*
   graphics/edid-continuous-frequency
+  graphics/renderer-mesa-driver-check_.*
 
 id: oem-graphics-manual
 unit: test plan

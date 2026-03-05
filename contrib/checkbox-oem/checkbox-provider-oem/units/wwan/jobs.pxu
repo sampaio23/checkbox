@@ -1,3 +1,20 @@
+unit: template
+template-resource: device
+template-filter:
+  (device.vendor_id == '32902' and device.product_id == '30048') or (device.vendor_id == '5315' and device.product_id == '19829')
+template-unit: job
+requires:
+  snap_executable.name == 'mmcli'
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: wwan/check-fcclock-state_{product_id}_{__index__}
+user: root
+command:
+  wwan-check-fcclock-state.sh {path}
+_summary: Check the fcclock state of ({product_id})
+_description:
+  The test case is for checking the fcclock state of WWAN module
+
 plugin: attachment
 category_id: com.canonical.plainbox::miscellanea
 id: wwan/get-wwan-firmware-version

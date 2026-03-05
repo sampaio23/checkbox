@@ -1,5 +1,34 @@
 plugin: shell
 category_id: com.canonical.plainbox::miscellanea
+id: power-management/intel_pmc_core
+imports:
+  from com.canonical.certification import cpuinfo
+  from com.canonical.certification import sleep
+requires:
+  sleep.mem_sleep == 's2idle'
+  cpuinfo.type == 'GenuineIntel'
+user: root
+environ:
+  SNAP
+command:
+  if [ -z ${SNAP+x} ]; then
+    SNAP_PREFIX="";
+  else
+    SNAP_PREFIX="/var/lib/snapd/hostfs";
+  fi
+  if [ ! -d $SNAP_PREFIX/sys/kernel/debug/pmc_core ]; then
+    echo "The system has no /sys/kernel/debug/pmc_core."
+    echo "It is required for doing low power idle analysis."
+    echo "For more detail, please refer to https://web.archive.org/web/20230614200306/https://01.org/blogs/qwang59/2020/linux-s0ix-troubleshooting"
+    exit 1
+  fi
+_summary: Check if intel_pmc_core driver is probed
+_description:
+  For system support low power idle, intel_pmc_core
+  driver is required for all Intel platforms.
+
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
 id: power-management/pm_test_devices
 user: root
 command:
@@ -27,3 +56,4 @@ command:
 _summary: Set pm_test to platform level
 _description:
   Set pm_test to platform level, so that we can ignore BIOS issue.
+
