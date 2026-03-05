@@ -1,0 +1,26 @@
+id: oem-bios-full
+unit: test plan
+_name: Bios tests
+_description: Full bios tests for devices
+include:
+nested_part:
+  oem-bios-automated
+  oem-bios-manual
+
+id: oem-bios-automated
+unit: test plan
+_name: Bios auto tests
+_description: Automated bios tests for devices
+bootstrap_include:
+  com.canonical.certification::cpuinfo
+include:
+  bios/acpi-bios-error_.*
+  bios/dump_libsmbios_tokens
+  bios/dump_libsmbios_tokens_attachment
+
+id: oem-bios-manual
+unit: test plan
+_name: Bios manual tests
+_description: Manual bios tests for devices
+include:
+
