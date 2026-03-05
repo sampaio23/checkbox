@@ -11,5 +11,12 @@ id: oem-kernel-automated
 unit: test plan
 _name: Kernel auto tests
 _description: Automated kernel tests for devices
+bootstrap_include:
+  com.canonical.certification::cpuinfo
+  com.canonical.certification::device
 include:
+  kernel/check_.*_start_rt_ucode_failed
+  kernel/check_.*_start_wm_firmware_failed
+  kernel/check_.*_unchecked_msr_access_error
   kernel/check-kernel
+  kernel/check_UBSAN_error

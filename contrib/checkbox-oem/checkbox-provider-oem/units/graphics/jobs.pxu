@@ -50,11 +50,15 @@ _summary: Check if panel edid follow the EDID spec.
 _description:
   Check if panel edid follow the EDID spec.
 
-
-
-
-
-
-
-
-
+unit: template
+template-resource: graphics_card
+template-unit: job
+requires:
+  snap_package.name == 'mesa-utils'
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: graphics/renderer-mesa-driver-check_{product_slug}_{index}
+command: graphics-renderer-mesa-driver-check.sh
+_summary: Check if renderer mesa driver support correctness
+_description:
+  Check if mesa driver support the renderer correctly
