@@ -11,7 +11,12 @@ id: oem-miscellanea-automated
 unit: test plan
 _name: Miscellanea auto tests
 _description: Automated miscellanea tests for devices
+bootstrap_include:
+  com.canonical.certification::dmi
 include:
+  miscellanea/ac-automatic-suspend-estar-settings_.*
+  miscellanea/csme-detection-tool
+  miscellanea/image-url
   miscellanea/screen-pkg-not-public
   miscellanea/screen-pkg-not-supported-by-canonical
 
