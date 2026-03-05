@@ -1,3 +1,16 @@
+unit: template
+template-resource: cpuinfo
+template-filter:
+  cpuinfo.type in ['GenuineIntel','AuthenticAMD']
+template-unit: job
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: bios/acpi-bios-error_{type}
+command: bios-acpi_bios_error.py
+_summary: Check if kernel reports ACPI BIOS Error
+_description:
+  Check if the kernel reports ACPI BIOS Error
+
 plugin: shell
 category_id: com.canonical.plainbox::miscellanea
 id: bios/dump_libsmbios_tokens
