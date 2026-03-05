@@ -6,7 +6,7 @@
 # SNAPBASE is the only required input, other variables
 # are obtained dynamically from the base.
 
-SNAP_VERSION = 0.2.1
+SNAP_VERSION = 0.3
 
 SNAP_OUTPUT = snapcraft.yaml
 SNAP_WORK_FOLDER = build
