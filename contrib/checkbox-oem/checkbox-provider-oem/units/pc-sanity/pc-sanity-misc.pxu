@@ -111,36 +111,6 @@ command: cat /var/tmp/checkbox-providers/*/side-load-changes.json || true
 _description:
  attach what changed from sideloading.
 
-plugin: attachment
-category_id: com.canonical.plainbox::miscellanea
-id: miscellanea/csme-detection-tool
-estimated_duration: 5.0
-requires:
- cpuinfo.type == 'GenuineIntel'
- module.name == 'mei_me'
- package.name == 'curl'
-command: csme-detection-tool.sh
-_description:
- Attach Intel ME info.
-
-unit: template
-template-resource: dmi
-template-filter:
- dmi.category == 'CHASSIS' and dmi.product not in ['Mini Tower', 'Tower', 'Main Server Chassis','Rack Mount Chassis']
-template-unit: job
-plugin: shell
-category_id: com.canonical.plainbox::miscellanea
-id: miscellanea/ac-automatic-suspend-estar-settings_{product}
-command:
- if [ ! -f /usr/share/glib-2.0/schemas/40_manage-estar-settings.gschema.override ]; then
-   echo "For somerville project, please check your manifest to see lp:1993993 is applied or not"
-   echo "For stella and sutton, please check manage-estar-settings is installed or not"
-   exit 1
- fi
-_description:
-  Check if image include manage-estar-settings package to apply default e-star setting
-  LP#1993993
-
 unit: template
 template-resource: dmi
 template-filter:
@@ -156,16 +126,6 @@ _summary:
 _description:
  According to PRD 3.9.9, {vendor} has a requirement to include Google Chrome.
  This check is to ensure the package "google-chrome-stable" is included.
-
-plugin: attachment
-category_id: com.canonical.plainbox::info
-id: info/image-url
-user: root
-estimated_duration: 0.1
-_description: Get image URL based on DCD
-_summary: Provides image URL based on DistributionChannelDescriptor meta data
-_purpose: Provide a link to the ISO file which was installed on the system
-command: get-image-url.sh
 
 id: miscellanea/sideload-hook-no-fail
 category_id: com.canonical.plainbox::miscellanea
