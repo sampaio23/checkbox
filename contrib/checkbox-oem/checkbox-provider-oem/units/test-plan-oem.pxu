@@ -29,6 +29,7 @@ nested_part:
   oem-barcode-scanner-automated
   oem-bios-automated
   oem-bluetooth-automated
+  oem-boot-automated
   oem-button-automated
   oem-buzzer-automated
   oem-camera-automated
@@ -85,6 +86,7 @@ nested_part:
   oem-audio-manual
   oem-barcode-scanner-manual
   oem-bios-manual
+  oem-boot-manual
   oem-button-manual
   oem-buzzer-manual
   oem-camera-manual
@@ -112,7 +114,6 @@ nested_part:
   oem-regulator-manual
   oem-rpmsg-manual
   oem-rtc-manual
-  oem-secure-boot-manual
   oem-socketcan-manual
   oem-spi-manual
   oem-strict-confinement-manual
