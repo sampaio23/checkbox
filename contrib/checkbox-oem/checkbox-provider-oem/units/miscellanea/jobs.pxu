@@ -111,3 +111,19 @@ command:
 _summary: Check if pkgs are not supported by Canonical
 _description:
   This lists the packages which is not coming from main or restricted component.
+
+plugin: shell
+id: miscellanea/somerville-installation
+category_id: com.canonical.plainbox::miscellanea
+requires: package.name == 'dell-recovery'
+environ:
+  SNAP
+command:
+  if [ -z ${SNAP+x} ]; then
+    SNAP_PREFIX=""
+  else
+    SNAP_PREFIX="/var/lib/snapd/hostfs";
+  fi
+  grep "(SUCCESS) Clean-Up .. Done" $SNAP_PREFIX/var/log/installer/chroot.sh.log
+_description: Check the result of the installation, from oem-qa-checkbox 6596762f
+

@@ -81,14 +81,6 @@ include:
     cpu_pkg_state_attachment
     miscellanea/sosreport_attachment
 
-id: somerville-installation
-category_id: com.canonical.plainbox::miscellanea
-requires: package.name == 'dell-recovery'
-plugin: shell
-command:
- grep "(SUCCESS) Clean-Up .. Done" /var/log/installer/chroot.sh.log
-_description: Check the result of the installation, from oem-qa-checkbox 6596762f
-
 plugin: attachment
 category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/bootstrap-pc-sanity-smoke-test
