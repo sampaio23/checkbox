@@ -3,7 +3,7 @@ template-resource: device
 template-filter: device.category == 'TOUCHPAD' and device.driver == 'hid-multitouch'
 template-unit: job
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::touchpad
 id: touchpad/pressure-capability-detect_{product_slug}
 requires:
   snap_package.name == 'libinput-bin'
@@ -37,7 +37,7 @@ template-filter:
   device.product_id == '4618'
 template-unit: job
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::touchpad
 id: touchpad/touchpad-firmware-version_{product_slug}
 user: root
 imports: from com.canonical.certification import dmi

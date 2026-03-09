@@ -4,7 +4,7 @@ template-filter:
   device.category == 'WIRELESS'
 template-unit: job
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::wireless
 id: wifi/check_{interface}_wifi6e_enabled
 requires:
   snap_executable.name == 'iw'

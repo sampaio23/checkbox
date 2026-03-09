@@ -1,5 +1,5 @@
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::graphics
 id: graphics/check-gpu-driver
 user: root
 command:
@@ -10,7 +10,7 @@ _description:
   LTS/formal version.
 
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::graphics
 imports: from com.canonical.certification import graphics_card
 requires:
   graphics_card.driver == 'nvidia'
@@ -29,7 +29,7 @@ template-filter:
   device.vendor_id == '4318'
 template-unit: job
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::graphics
 id: graphics/check_nvidia_modalias_{__index__}_{product_id}
 requires: snap_executable.name == 'ubuntu-drivers'
 command:
@@ -47,7 +47,7 @@ template-filter:
   dmi.category == 'CHASSIS' and dmi.product not in ['Mini Tower', 'Tower', 'Main Server Chassis','Rack Mount Chassis']
 template-unit: job
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::graphics
 id: graphics/check_windowing_system_{product}
 requires:
   lsb.release >= "22.04"
@@ -60,7 +60,7 @@ _description:
   And machine with AMD and Intel GPU will default to wayland.
 
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::graphics
 id: graphics/edid-continuous-frequency
 command:
   graphics-edid_continuous_frequency_check.py
@@ -74,7 +74,7 @@ template-unit: job
 requires:
   snap_package.name == 'mesa-utils'
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::graphics
 id: graphics/renderer-mesa-driver-check_{product_slug}_{index}
 command: graphics-renderer-mesa-driver-check.sh
 _summary: Check if renderer mesa driver support correctness

@@ -1,5 +1,5 @@
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::power-management
 id: power-management/intel_pmc_core
 imports:
   from com.canonical.certification import cpuinfo
@@ -28,7 +28,7 @@ _description:
   driver is required for all Intel platforms.
 
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::power-management
 id: power-management/pm_test_devices
 user: root
 command:
@@ -38,7 +38,7 @@ _description:
   Set pm_test to devices level, so that we can ignore BIOS issue.
 
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::power-management
 id: power-management/pm_test_freezer
 user: root
 command:
@@ -48,7 +48,7 @@ _description:
   Set pm_test to freezer level, so that we can ignore BIOS issue.
 
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::power-management
 id: power_management/pm_test_platform
 user: root
 command:

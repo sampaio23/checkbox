@@ -17,6 +17,7 @@ _purpose:
 
 plugin: shell
 id: boot/grub_boothole
+category_id: com.canonical.plainbox::miscellanea
 user: root
 imports: from com.canonical.certification import lsb
 requires:

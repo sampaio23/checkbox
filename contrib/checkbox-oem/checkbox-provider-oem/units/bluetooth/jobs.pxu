@@ -3,7 +3,7 @@ template-resource: device
 template-filter: device.category == 'BLUETOOTH'
 template-unit: job
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::bluetooth
 id: bluetooth/bluetooth-on-off-rfkill_{interface}
 requires:
   snap_executable.name == 'bluetoothctl'
@@ -26,7 +26,7 @@ _description:
   Check if Bluetooth does not work after gnome-control-center on/off.
 
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::bluetooth
 id: bluetooth/bluetooth-scan
 imports: from com.canonical.certification import device
 requires:

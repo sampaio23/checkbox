@@ -6,7 +6,7 @@ template-unit: job
 requires:
   snap_executable.name == 'mmcli'
 plugin: shell
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::mobilebroadband
 id: wwan/check-fcclock-state_{product_id}_{__index__}
 user: root
 command:
@@ -16,7 +16,7 @@ _description:
   The test case is for checking the fcclock state of WWAN module
 
 plugin: attachment
-category_id: com.canonical.plainbox::miscellanea
+category_id: com.canonical.plainbox::mobilebroadband
 id: wwan/get-wwan-firmware-version
 estimated_duration: 2.0
 imports: from com.canonical.certification import mobilebroadband
