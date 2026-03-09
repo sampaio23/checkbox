@@ -29,8 +29,14 @@ bootstrap_include:
   com.canonical.certification::dmi
   com.canonical.certification::graphics_card
 nested_part:
+  com.canonical.certification::client-cert-desktop-24-04-automated
+include:
+  com.canonical.certification::miscellanea/debsums
+  com.canonical.certification::miscellanea/screen-private-ppa
+  com.canonical.certification::power-management-cpu-cstate-cert-automated
+  com.canonical.certification::power-management/switch_power_mode
   oem-automated
-  bios/acpi-bios-error_.*
+  bios/acpi-bios-error_.*                                                 certification-status=blocker
   bios/dump_libsmbios_tokens
   bios/dump_libsmbios_tokens_attachment
   bluetooth/bluetooth-on-off-rfkill_{interface}
@@ -43,16 +49,16 @@ nested_part:
   device/intel-hid_.*
   device/intel-vtd-enabled_.*
   device/tgp-rid-check_.*
-  graphics/check-gpu-driver
+  graphics/check-gpu-driver                                               certification-status=blocker
   graphics/check-nvidia
-  graphics/check_nvidia_modalias_.*
+  graphics/check_nvidia_modalias_.*                                       certification-status=blocker
   graphics/check_windowing_system_.*
   graphics/edid-continuous-frequency
   graphics/renderer-mesa-driver-check_.*
   kernel/check_.*_start_rt_ucode_failed
   kernel/check_.*_start_wm_firmware_failed
   kernel/check_.*_unchecked_msr_access_error
-  kernel/check-kernel
+  kernel/check-kernel                                                     certification-status=blocker
   kernel/check_UBSAN_error
   miscellanea/ac-automatic-suspend-estar-settings_.*
   miscellanea/csme-detection-tool
@@ -78,6 +84,15 @@ nested_part:
   wwan/check-fcclock-state_.*
   wwan/get-wwan-firmware-version
 exclude:
+  com.canonical.certification::after-suspend-bluetooth4/beacon_.*
+  com.canonical.certification::after-suspend-graphics/1_auto_switch_card_.*
+  com.canonical.certification::bluetooth4/beacon_eddystone.*
+  com.canonical.certification::bluetooth/bluetooth_obex_.*
+  com.canonical.certification::graphics/1_auto_switch_card_.*
+  com.canonical.certification::graphics/2_.*
+  com.canonical.certification::suspend/1_.*
+  com.canonical.certification::suspend/2_.*
+  com.canonical.certification::suspend/bluetooth_obex_.*
 certification_status_overrides:
   apply blocker to .*
 
