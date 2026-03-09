@@ -67,6 +67,7 @@ include:
   miscellanea/image-url
   miscellanea/screen-pkg-not-public
   miscellanea/screen-pkg-not-supported-by-canonical
+  miscellanea/sideload-hook-no-fail
   miscellanea/somerville-installation
   power-management/intel_pmc_core
   thermal/check-thermald-unknown-cond

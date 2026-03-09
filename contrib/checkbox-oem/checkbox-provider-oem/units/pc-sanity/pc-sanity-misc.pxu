@@ -118,19 +118,3 @@ _summary:
 _description:
  According to PRD 3.9.9, {vendor} has a requirement to include Google Chrome.
  This check is to ensure the package "google-chrome-stable" is included.
-
-id: miscellanea/sideload-hook-no-fail
-category_id: com.canonical.plainbox::miscellanea
-plugin: shell
-environ:
-  SNAP
-command:
-  if [ -z ${SNAP+x} ]; then
-    LOG_LOCATION=/var/log/installer/sideload-hook.sh.*.log;
-  else
-    LOG_LOCATION=/var/lib/snapd/hostfs/var/log/installer/sideload-hook.sh.*.log
-  fi
-  ! grep "# FAILED:" "$LOG_LOCATION"
-_description:
-  Check the result of sideload/hook.sh, used for OEM PC enablements since 24.04
-

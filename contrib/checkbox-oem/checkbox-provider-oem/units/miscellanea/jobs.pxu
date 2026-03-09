@@ -129,6 +129,21 @@ _summary: Check if pkgs are not supported by Canonical
 _description:
   This lists the packages which is not coming from main or restricted component.
 
+id: miscellanea/sideload-hook-no-fail
+category_id: com.canonical.plainbox::miscellanea
+plugin: shell
+environ:
+  SNAP
+command:
+  if [ -z ${SNAP+x} ]; then
+    LOG_LOCATION=/var/log/installer/sideload-hook.sh.*.log;
+  else
+    LOG_LOCATION=/var/lib/snapd/hostfs/var/log/installer/sideload-hook.sh.*.log
+  fi
+  ! grep "# FAILED:" "$LOG_LOCATION"
+_description:
+  Check the result of sideload/hook.sh, used for OEM PC enablements since 24.04
+
 plugin: shell
 id: miscellanea/somerville-installation
 category_id: com.canonical.plainbox::miscellanea
