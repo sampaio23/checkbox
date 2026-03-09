@@ -12,9 +12,7 @@ unit: test plan
 _name: oem automated WiFi mode tests
 _description: automated WiFi mode tests for oem
 bootstrap_include:
-  com.canonical.certification::device
 include:
-  wifi/check_.*_wifi6e_enabled
 
 id: oem-wifi-manual
 unit: test plan

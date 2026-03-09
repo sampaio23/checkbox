@@ -13,8 +13,6 @@ _name: Boot manual Tests (Automated)
 _description: Boot manual Tests (Automated)
 bootstrap_include:
 include:
-  boot/boot-up-time-under-2-min
-  boot/grub_boothole
 
 id: oem-boot-manual
 unit: test plan

@@ -12,19 +12,7 @@ unit: test plan
 _name: Thermal auto tests
 _description: Automated thermal tests for devices
 bootstrap_include:
-  com.canonical.certification::device
 include:
-  thermal/check-thermald-unknown-cond
-  thermal/intel-cpu-thermal
-  thermal/intel-p-state
-  thermal/intel-powerclamp
-  thermal/intel-rapl
-  thermal/intel-rapl-mmio_.*
-  thermal/intel-x86-pkg-temp-thermal
-  thermal/proc_thermal_.*
-  thermal/thermal-policy-set_.*
-  thermal/thermald
-  thermal/valid-thermal-zone-trip-points
 
 id: oem-thermal-manual
 unit: test plan

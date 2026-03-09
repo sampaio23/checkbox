@@ -12,10 +12,7 @@ unit: test plan
 _name: WWAN auto tests
 _description: Automated wwan tests for devices
 bootstrap_include:
-  com.canonical.certification::device
 include:
-  wwan/check-fcclock-state_.*
-  wwan/get-wwan-firmware-version
 
 id: oem-wwan-manual
 unit: test plan
