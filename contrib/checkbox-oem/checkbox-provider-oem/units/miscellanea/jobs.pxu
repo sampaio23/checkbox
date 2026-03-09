@@ -40,6 +40,23 @@ _description:
 
 plugin: shell
 category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/cvescan
+environ:
+  SNAP
+command:
+  if [ -z ${SNAP+x} ]; then
+    SNAP_PREFIX=""
+  else
+    SNAP_PREFIX="/var/lib/snapd/hostfs";
+  fi
+  misc-ubuntu-oval.sh "$PLAINBOX_SESSION_SHARE/oval" "$SNAP_PREFIX/var/local/plainbox-provider-pc-sanity/clean-installed-dpkg.list"
+_summary: Scan if all CVEs are fixed well.
+_description:
+  Refer to https://ubuntu.com/security/oval,
+  to scan if all CVEs are fixed well on the target machine.
+
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/gate_rste_raid
 environ:
   SNAP

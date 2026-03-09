@@ -28,7 +28,7 @@ bunzip2 "$OVAL_XML_BZ2"
 # 3. Generate the report HTML
 oscap oval eval --report "$REPORT_HTML" "$OVAL_XML" &>/dev/null
 
-oval-report.py --version
+misc-oval-report.py --version
 
 # shellcheck disable=SC2086
-oval-report.py --report "$REPORT_HTML" --release "$RELEASE" $ADDITIONAL_OPTIONS
+misc-oval-report.py --report "$REPORT_HTML" --release "$RELEASE" $ADDITIONAL_OPTIONS
