@@ -14,6 +14,7 @@ interface, so you need to connect it to the checkbox runtime.
 $ snap install --devmode checkbox24
 $ snap install checkbox-oem
 $ sudo snap connect checkbox24:custom-frontend checkbox-oem
+$ sudo snap connect checkbox24:hardware-observe
 # Running test from provider
 $ checkbox24.checkbox run com.canonical.certification::miscellanea/check-kernel
 ```
@@ -26,6 +27,7 @@ $ checkbox24.checkbox run com.canonical.certification::miscellanea/check-kernel
 $ snap install --devmode checkbox24
 $ snap install checkbox-oem
 $ sudo snap connect checkbox24:custom-frontend checkbox-oem
+$ sudo snap connect checkbox24:hardware-observe
 # Starting agent
 $ snap start checkbox24.agent
 
@@ -34,6 +36,7 @@ $ snap start checkbox24.agent
 $ snap install --devmode checkbox24
 $ snap install checkbox-oem
 $ sudo snap connect checkbox24:custom-frontend checkbox-oem
+$ sudo snap connect checkbox24:hardware-observe
 # Running a test
 $ checkbox24.checkbox control <DUT IP ADDRESS>
 ```

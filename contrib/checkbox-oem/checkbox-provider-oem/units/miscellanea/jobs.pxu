@@ -58,18 +58,11 @@ _description:
 plugin: shell
 category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/gate_rste_raid
-environ:
-  SNAP
 command:
-  if [ -z ${SNAP+x} ]; then
-    SNAP_PREFIX=""
-  else
-    SNAP_PREFIX="/var/lib/snapd/hostfs";
-  fi
   set -x
   # copy from script https://launchpadlibrarian.net/468773053/hw-detect_1.117ubuntu8.debdiff
   # shellcheck disable=SC1001
-  for ahci_device in $SNAP_PREFIX/sys/module/ahci/drivers/pci\:ahci/*/remapped_nvme
+  for ahci_device in /sys/module/ahci/drivers/pci\:ahci/*/remapped_nvme
   do
     if [ -f "$ahci_device" ]; then
       ref_count="$(cat "$ahci_device")"

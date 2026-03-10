@@ -8,15 +8,8 @@ requires:
   sleep.mem_sleep == 's2idle'
   cpuinfo.type == 'GenuineIntel'
 user: root
-environ:
-  SNAP
 command:
-  if [ -z ${SNAP+x} ]; then
-    SNAP_PREFIX="";
-  else
-    SNAP_PREFIX="/var/lib/snapd/hostfs";
-  fi
-  if [ ! -d $SNAP_PREFIX/sys/kernel/debug/pmc_core ]; then
+  if [ ! -d /sys/kernel/debug/pmc_core ]; then
     echo "The system has no /sys/kernel/debug/pmc_core."
     echo "It is required for doing low power idle analysis."
     echo "For more detail, please refer to https://web.archive.org/web/20230614200306/https://01.org/blogs/qwang59/2020/linux-s0ix-troubleshooting"
