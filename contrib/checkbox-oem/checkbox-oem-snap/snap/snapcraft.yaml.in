@@ -43,9 +43,11 @@ parts:
       - iputils-ping
       - i2c-tools
       - jq
+      - libopenscap25t64
       - lsb-release
       - modemmanager
       - msr-tools
+      - openscap-scanner
       - pciutils
       - python3
       - python3-apt
@@ -57,3 +59,10 @@ parts:
     override-build: |
       python3 manage.py build
       python3 manage.py install --layout=relocatable --prefix=/providers/oem --root="$CRAFT_PART_INSTALL"
+  extra-path-environment:
+    plugin: nil
+    override-build: |
+      echo "LD_LIBRARY_PATH+=/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/
+      " >> $CRAFT_PART_INSTALL/extra_path_environment
+    stage:
+      - extra_path_environment

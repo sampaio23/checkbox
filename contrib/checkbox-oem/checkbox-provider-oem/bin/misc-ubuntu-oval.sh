@@ -14,7 +14,7 @@ mkdir -p "$1" && cd "$1" || exit 1
 
 # See also: https://ubuntu.com/security/oval
 
-RELEASE=$(lsb_release -cs)
+RELEASE=$(grep DISTRIB_CODENAME /etc/lsb-release | cut -d'=' -f2)
 OVAL_XML=com.ubuntu.$RELEASE.usn.oval.xml
 OVAL_XML_BZ2=$OVAL_XML.bz2
 REPORT_HTML=report.html
@@ -26,6 +26,10 @@ wget "https://security-metadata.canonical.com/oval/$OVAL_XML_BZ2" &>/dev/null
 bunzip2 "$OVAL_XML_BZ2"
 
 # 3. Generate the report HTML
+if [ ! -z ${SNAP+x} ]; then
+  export OSCAP_SCHEMA_PATH=$SNAP/custom_frontends/custom_frontend/usr/share/openscap/schemas/
+  export OSCAP_XSLT_PATH=$SNAP/custom_frontends/custom_frontend/usr/share/openscap/xsl/
+fi
 oscap oval eval --report "$REPORT_HTML" "$OVAL_XML" &>/dev/null
 
 misc-oval-report.py --version
