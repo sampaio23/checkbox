@@ -50,6 +50,20 @@ _description:
 
 plugin: shell
 category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/check-production-suite
+imports: from com.canonical.certification import lsb
+requires:
+  lsb.release >= "22.04"
+user: root
+command: misc-check-production-suite.sh
+_summary: Check if production suite is created properly
+_description:
+  Add a job to check the production suite is created correctly.
+  On Ubuntu 22.04, only checks somerville platform archives.
+  On Ubuntu 24.04 and newer versions, checks platform archives for somerville, stella, and sutton.
+
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/check-secureboot-fish-not-installed
 imports: from com.canonical.certification import lsb
 requires:
