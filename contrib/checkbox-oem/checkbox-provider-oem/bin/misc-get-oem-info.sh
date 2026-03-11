@@ -21,6 +21,12 @@ exit 1
 prepare() {
     local dcd
 
+    if [ -z ${SNAP+x} ]; then
+        DPKG_STATUS="/var/lib/dpkg/status";
+    else
+        DPKG_STATUS="/var/lib/snapd/hostfs/var/lib/dpkg/status";
+    fi
+
     dcd=$(ubuntu-report show | jq -r '.OEM.DCD')
     for project in sutton stella somerville; do
         if [[ "$dcd" == *"$project"* ]]; then
@@ -30,7 +36,7 @@ prepare() {
     done
 
     if [ -z "${oem}" ]; then
-        >&2 echo "[ERROR][CODE]got an empty OEM codename in ${FUNCNAME[0]}";
+        >&2 echo "[ERROR][CODE] got an empty OEM codename in ${FUNCNAME[0]}";
         return 1
     fi
 
@@ -46,7 +52,7 @@ prepare() {
     # Remove the group name
     case "${oem%%.*}" in
         "somerville")
-            for pkg in $(dpkg-query -W -f='${Package}\n'  "oem-$oem*-meta"); do
+            for pkg in $(grep "^Package: oem-$oem*-meta" $DPKG_STATUS | cut -d' ' -f2); do
                 _code_name=$(echo "${pkg}" | awk -F"-" '{print $3}')
                 if [ "$_code_name" == "factory" ] ||
                     [ "$_code_name" == "meta" ]; then
@@ -57,7 +63,7 @@ prepare() {
             done
             ;;
         "stella")
-            for pkg in $(dpkg-query -W -f='${Package}\n' "$meta_pattern"); do
+            for pkg in $(grep "^Package: $meta_pattern" $DPKG_STATUS | cut -d' ' -f2); do
                 _code_name=$(echo "${pkg}" | awk -F"-" '{print $3}')
                 if [ "$_code_name" == "factory" ] ||
                     [ "$_code_name" == "meta" ]; then
@@ -69,7 +75,7 @@ prepare() {
             done
             ;;
         "sutton")
-            for pkg in $(dpkg-query -W -f='${Package}\n' "$meta_pattern"); do
+            for pkg in $(grep "^Package: $meta_pattern" $DPKG_STATUS | cut -d' ' -f2); do
                 _code_name=$(echo "${pkg}" | awk -F"-" '{print $3}')
                 if [ "$_code_name" == "factory" ] ||
                     [ "$_code_name" == "meta" ]; then
@@ -81,7 +87,7 @@ prepare() {
             done
             ;;
         *)
-            >&2 echo "[ERROR][CODE]we should not be here in ${FUNCNAME[0]} : ${LINENO}"
+            >&2 echo "[ERROR][CODE] we should not be here in ${FUNCNAME[0]} : ${LINENO}"
             ;;
     esac
 }

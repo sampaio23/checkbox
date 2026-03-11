@@ -70,6 +70,7 @@ include:
   miscellanea/screen-pkg-not-supported-by-canonical
   miscellanea/sideload-hook-no-fail
   miscellanea/somerville-installation
+  miscellanea/somerville-platform-meta-test
   power-management/intel_pmc_core
   thermal/check-thermald-unknown-cond
   thermal/intel-cpu-thermal
