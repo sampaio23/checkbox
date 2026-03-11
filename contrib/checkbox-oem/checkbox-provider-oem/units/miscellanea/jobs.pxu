@@ -23,6 +23,31 @@ _description:
   Check if image include manage-estar-settings package to apply default e-star setting
   LP#1993993
 
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/check-oem-recovery-version
+environ:
+  SNAP
+command:
+  if [ -z ${SNAP+x} ]; then
+    DPKG_STATUS="/var/lib/dpkg/status";
+  else
+    DPKG_STATUS="/var/lib/snapd/hostfs/var/lib/dpkg/status";
+  fi
+  if awk 'BEGIN{RS="";FS="\n"} $1=="Package: dell-recovery"{print $0}' "$DPKG_STATUS" | grep "^Version:" | grep -q "somerville"; then
+    exit 0
+  elif awk 'BEGIN{RS="";FS="\n"} $1=="Package: ubuntu-recovery"{print $0}' "$DPKG_STATUS" | grep "^Version:" | grep -q -e "timbuktu" -e "ouagadougou" -e "jiayi"; then
+    exit 0
+  else
+    echo "The recovery package version string is wrong, expect somerville for dell-recovery,"
+    echo "and ouagadougou for ubuntu-recovery."
+    exit 1
+  fi
+_summary: Confirm the recovery version string is as expected.
+_description:
+  Based on the meeting conclusion of 4/22, we need somerville version before Mario agree Canonical take the duty of dell-recovery sru.
+  Let it support ubuntu-recovery and dell-recovery.
+
 plugin: attachment
 category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/csme-detection-tool

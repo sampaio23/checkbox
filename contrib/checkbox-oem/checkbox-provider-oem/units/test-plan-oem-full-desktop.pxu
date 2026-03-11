@@ -61,6 +61,7 @@ include:
   kernel/check-kernel                                                     certification-status=blocker
   kernel/check_UBSAN_error
   miscellanea/ac-automatic-suspend-estar-settings_.*
+  miscellanea/check-oem-recovery-version
   miscellanea/csme-detection-tool
   miscellanea/cvescan
   miscellanea/gate_rste_raid
