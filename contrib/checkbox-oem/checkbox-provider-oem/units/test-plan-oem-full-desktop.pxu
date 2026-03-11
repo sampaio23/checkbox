@@ -66,6 +66,7 @@ include:
   miscellanea/gate_rste_raid
   miscellanea/google-chrome-included_.*
   miscellanea/image-url
+  miscellanea/mesa-libdrm-gating_.*
   miscellanea/screen-pkg-not-public
   miscellanea/screen-pkg-not-supported-by-canonical
   miscellanea/sideload-hook-no-fail

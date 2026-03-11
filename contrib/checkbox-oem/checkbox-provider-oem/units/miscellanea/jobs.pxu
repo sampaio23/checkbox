@@ -111,6 +111,66 @@ _summary: Provides image URL based on DistributionChannelDescriptor meta data
 _purpose: Provide a link to the ISO file which was installed on the system
 command: misc-get-image-url.sh
 
+unit: template
+template-resource: cpuinfo
+template-filter:
+  cpuinfo.type == 'GenuineIntel'
+  cpuinfo.model_number == '6'
+  cpuinfo.model_version == '151'
+template-unit: job
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/mesa-libdrm-gating_{model_number}_{model_version}_{model_revision}
+environ:
+  SNAP
+command:
+  if [ -z ${SNAP+x} ]; then
+    DPKG_STATUS="/var/lib/dpkg/status";
+  else
+    DPKG_STATUS="/var/lib/snapd/hostfs/var/lib/dpkg/status";
+  fi
+  get_version() {
+    local pkg=$1
+    awk -v pkg="$pkg" '
+      BEGIN { RS=""; FS="\n" }
+      $1 == "Package: "pkg {
+          for(i=1; i<=NF; i++) {
+              if($i ~ /^Version:/) {
+                  sub(/^Version: /, "", $i);
+                  print $i;
+                  exit;
+              }
+          }
+      }' "$DPKG_STATUS"
+  }
+  ver_gt() {
+    [ "$1" = "$2" ] && return 1
+    printf '%s\n%s\n' "$2" "$1" | sort -V -C
+  }
+  GLX_MESA_VER=$(get_version "libglx-mesa0:amd64")
+  EGL_MESA_VER=$(get_version "libegl-mesa0:amd64")
+  GBM_VER=$(get_version "libgbm1:amd64")
+  DRM_VER=$(get_version "libdrm2:amd64")
+  if ! ver_gt "$GLX_MESA_VER" "21.0.3"; then
+    echo "Wrong libglx-mesa0 version $GLX_MESA_VER for supporting ADL-S"
+    exit 1
+  fi
+  if ! ver_gt "$EGL_MESA_VER" "21.0.3"; then
+    echo "Wrong libegl-mesa0 version $EGL_MESA_VER for supporting ADL-S"
+    exit 1
+  fi
+  if ! ver_gt "$GBM_VER" "21.0.3"; then
+    echo "Wrong libgbm1 version $GBM_VER for supporting ADL-S"
+    exit 1
+  fi
+  if ! ver_gt "$DRM_VER" "2.4.105"; then
+    echo "Wrong libdrm2 version $DRM_VER for supporting ADL-S"
+    exit 1
+  fi
+_summary: Check libglx-mesa0 libegl-mesa0 libgbm1 libdrm2 for ADL-S
+_description:
+  Gating the mesa and libdrm packages for supporting ADL-S graphic
+
 plugin: shell
 category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/screen-pkg-not-public
