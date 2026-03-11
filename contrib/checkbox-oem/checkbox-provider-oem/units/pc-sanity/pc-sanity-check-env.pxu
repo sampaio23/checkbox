@@ -1,14 +1,4 @@
 plugin: shell
-id: miscellanea/platform-userguide-test
-category_id: com.canonical.plainbox::miscellanea
-requires:
- lsb.release >= "20.04"
- dmi.vendor == 'LENOVO'
-command:
- platform_userguide_test
-_description: Check if the platform userguide package is installed.
-
-plugin: shell
 category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/check_oem_recovery_version
 requires:

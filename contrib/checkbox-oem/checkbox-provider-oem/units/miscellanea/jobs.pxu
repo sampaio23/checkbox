@@ -172,6 +172,21 @@ _description:
   Gating the mesa and libdrm packages for supporting ADL-S graphic
 
 plugin: shell
+id: miscellanea/platform-userguide-test
+category_id: com.canonical.plainbox::miscellanea
+imports:
+  from com.canonical.certification import dmi
+  from com.canonical.certification import lsb
+requires:
+  lsb.release >= "20.04"
+  dmi.vendor == 'LENOVO'
+environ:
+  SNAP
+command:
+  misc-platform_userguide_test
+_description: Check if the platform userguide package is installed.
+
+plugin: shell
 category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/screen-pkg-not-public
 user: root

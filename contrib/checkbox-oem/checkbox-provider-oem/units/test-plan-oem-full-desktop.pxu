@@ -67,6 +67,7 @@ include:
   miscellanea/google-chrome-included_.*
   miscellanea/image-url
   miscellanea/mesa-libdrm-gating_.*
+  miscellanea/platform-userguide-test
   miscellanea/screen-pkg-not-public
   miscellanea/screen-pkg-not-supported-by-canonical
   miscellanea/sideload-hook-no-fail
