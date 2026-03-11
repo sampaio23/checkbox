@@ -62,6 +62,7 @@ include:
   kernel/check_UBSAN_error
   miscellanea/ac-automatic-suspend-estar-settings_.*
   miscellanea/check-oem-recovery-version
+  miscellanea/check-secureboot-fish-not-installed
   miscellanea/csme-detection-tool
   miscellanea/cvescan
   miscellanea/gate_rste_raid

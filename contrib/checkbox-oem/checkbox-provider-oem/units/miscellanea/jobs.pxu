@@ -48,6 +48,42 @@ _description:
   Based on the meeting conclusion of 4/22, we need somerville version before Mario agree Canonical take the duty of dell-recovery sru.
   Let it support ubuntu-recovery and dell-recovery.
 
+plugin: shell
+category_id: com.canonical.plainbox::miscellanea
+id: miscellanea/check-secureboot-fish-not-installed
+imports: from com.canonical.certification import lsb
+requires:
+  lsb.release >= "22.04"
+user: root
+command:
+  if [ -z ${SNAP+x} ]; then
+    DPKG_STATUS="/var/lib/dpkg/status";
+  else
+    DPKG_STATUS="/var/lib/snapd/hostfs/var/lib/dpkg/status";
+  fi
+  if awk 'BEGIN{RS="";FS="\n"} $1=="Package: dell-recovery"{print $0}' "$DPKG_STATUS" | grep -q "Status: install ok installed"; then
+    TARGET=$(python3 -c "import Dell.recovery_common as magic; target=magic.find_partition(); print(target.decode('utf8')) if type(target) is bytes else print(target)")
+  elif awk 'BEGIN{RS="";FS="\n"} $1=="Package: ubuntu-recovery"{print $0}' "$DPKG_STATUS" | grep -q "Status: install ok installed"; then
+    TARGET=$(python3 -c "import ubunturecovery.recovery_common as magic; target=magic.find_partition('PQSERVICE'); print(target.decode('utf8')) if type(target) is bytes else print(target)")
+  fi
+  mount "$TARGET" /cdrom
+  RET=$?
+  if [ $RET -eq 0 ] || [ $RET -eq 32 ]; then
+    if [ -d /cdrom/secureboot ]; then
+      echo "Found the recovery contains file from secureboot fish"
+      echo "The FVR image no longer requires to install dkms, so that we don't need secureboot fish"
+      echo "please remove it before FVR release."
+      exit 1
+    fi
+  else
+    echo "Mount $TARGET to /cdrom failed, can't check content"
+    exit 1
+  fi
+_summary: Check secureboot fish is not installed
+_description:
+  The FVR image no longer require dkms, so check if the secureboot fish
+  has removed.
+
 plugin: attachment
 category_id: com.canonical.plainbox::miscellanea
 id: miscellanea/csme-detection-tool
