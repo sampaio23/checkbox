@@ -39,7 +39,7 @@ include:
   bios/acpi-bios-error_.*                                                 certification-status=blocker
   bios/dump_libsmbios_tokens
   bios/dump_libsmbios_tokens_attachment
-  bluetooth/bluetooth-on-off-rfkill_{interface}
+  bluetooth/bluetooth-on-off-rfkill_.*
   bluetooth/bluetooth-scan
   boot/boot-up-time-under-2-min
   boot/grub_boothole
