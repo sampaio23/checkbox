@@ -30,12 +30,12 @@ bootstrap_include:
   com.canonical.certification::graphics_card
 nested_part:
   com.canonical.certification::client-cert-desktop-24-04-automated
+  oem-automated
 include:
   com.canonical.certification::miscellanea/debsums
   com.canonical.certification::miscellanea/screen-private-ppa
   com.canonical.certification::power-management-cpu-cstate-cert-automated
   com.canonical.certification::power-management/switch_power_mode
-  oem-automated
   bios/acpi-bios-error_.*                                                 certification-status=blocker
   bios/dump_libsmbios_tokens
   bios/dump_libsmbios_tokens_attachment
